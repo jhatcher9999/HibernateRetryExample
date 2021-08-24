@@ -1,0 +1,8 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.hatcherdev.cockroach.hibernate.aop.SerializationRetryMethodAspect"/>
+        <weaver options="-verbose -showWeaveInfo">
+            <include within="com.hatcherdev.cockroach.hibernate.*"/>
+        </weaver>
+    </aspects>
+</aspectj>
