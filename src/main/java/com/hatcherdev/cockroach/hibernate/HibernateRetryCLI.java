@@ -16,13 +16,16 @@ public class HibernateRetryCLI {
                 .addAnnotatedClass(Account.class)
                 .buildSessionFactory();
 
+
         AccountServiceBasic accountServiceBasic = new AccountServiceBasic();
         AccountServiceCentralizedLogic accountServiceCentralizedLogic = new AccountServiceCentralizedLogic();
         AccountServiceAOP accountServiceAOP = new AccountServiceAOP(false);
 
         try (Session session = sessionFactory.openSession()) {
 
-            session.setHibernateFlushMode(FlushMode.AUTO);
+//            session.addEventListeners();
+//
+//            session.setHibernateFlushMode(FlushMode.AUTO);
 
             accountServiceBasic.addAccounts(session);
             //accountServiceCentralizedLogic.addAccounts(session);

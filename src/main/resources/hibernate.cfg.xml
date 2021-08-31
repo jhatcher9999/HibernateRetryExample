@@ -9,11 +9,12 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.CockroachDB201Dialect</property>
         <!-- <property name="hibernate.connection.url">jdbc:postgresql://localhost:26257/bank?sslmode=verify-full&amp;sslrootcert=/Users/jimhatcher/local_certs/ca.crt.der&amp;sslcert=/Users/jimhatcher/local_certs/client.root.crt.der&amp;sslkey=/Users/jimhatcher/local_certs/client.root.key.der</property>-->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:26257/bank?sslmode=verify-full&amp;sslrootcert=/Users/jimhatcher/local_certs/ca.crt.der&amp;sslcert=/Users/jimhatcher/local_certs/client.root.crt.der&amp;sslkey=/Users/jimhatcher/local_certs/client.root.key.der&amp;reWriteBatchInserts=true</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:26257/bank?sslmode=verify-full&amp;sslrootcert=/Users/jimhatcher/local_certs/ca.crt.der&amp;sslcert=/Users/jimhatcher/local_certs/client.root.crt.der&amp;sslkey=/Users/jimhatcher/local_certs/client.root.key.der&amp;reWriteBatchedInserts=true&amp;ApplicationName=HibernateRetryExample</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
 
         <!-- Required so a table can be created from the 'Account' class -->
+        <!-- this value was "create" originally -->
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Optional: Show SQL output for debugging -->
@@ -23,5 +24,7 @@
         <property name="hibernate.jdbc.batch_size">128</property>
         <property name="hibernate.order_inserts">true</property>
         <property name="hibernate.order_updates">true</property>
+        <property name="hibernate.jdbc.batch_versioned_data">true</property>
+        <property name="hibernate.jdbc.hibernate.id.new_generator_mappings">false</property>
     </session-factory>
 </hibernate-configuration>

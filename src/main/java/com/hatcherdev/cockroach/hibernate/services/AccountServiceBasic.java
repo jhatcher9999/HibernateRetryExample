@@ -5,17 +5,17 @@ import org.hibernate.JDBCException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.transaction.TransactionScoped;
 import java.math.BigDecimal;
 import java.util.Random;
 import java.util.function.Function;
 
 public class AccountServiceBasic {
 
+
+
     private static final Random RAND = new Random();
     private static final String RETRY_SQL_STATE = "40001";
     private static final int MAX_ATTEMPT_COUNT = 6;
-
 
     public BigDecimal addAccountsTypical(Session session) {
 
@@ -67,20 +67,22 @@ public class AccountServiceBasic {
             //**********************************************************************************************************************
             try {
                 Account account1 = new Account();
+                account1.id = 101;
                 account1.setBalance(BigDecimal.valueOf(1000));
                 session.save(account1);
                 System.out.printf("APP: account id :" + account1.getId() + "\n");
 
                 Account account2 = new Account();
+                account2.id = 102;
                 account2.setBalance(BigDecimal.valueOf(250));
                 session.save(account2);
                 System.out.printf("APP: account id :" + account2.getId() + "\n");
 
                 Account account3 = new Account();
+                account3.id = 103;
                 account3.setBalance(BigDecimal.valueOf(3.14159));
                 session.save(account3);
                 System.out.printf("APP: account id :" + account3.getId() + "\n");
-
 
                 txn.commit();
                 System.out.printf("APP: COMMIT;\n");
